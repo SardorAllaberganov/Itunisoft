@@ -16,22 +16,52 @@ $(document).ready(function () {
         offset: 100,
     });
 
-    jQuery(".counter-elements").addClass("invisible").viewportChecker({
-        classToAdd: "visible animated fadeInUp",
-        offset: 100,
-        callbackFunction: function () {
-            $('.count').each(function () {
-                $(this).prop('Counter',0).animate({
-                    Counter: $(this).text()
-                }, {
-                    duration: 3000,
-                    easing: 'swing',
-                    step: function (now) {
-                        $(this).text(Math.ceil(now));
-                    }
+    jQuery(".counter-elements")
+        .addClass("invisible")
+        .viewportChecker({
+            classToAdd: "visible animated fadeInUp",
+            offset: 100,
+            callbackFunction: function () {
+                $(".count").each(function () {
+                    $(this)
+                        .prop("Counter", 0)
+                        .animate(
+                            {
+                                Counter: $(this).text(),
+                            },
+                            {
+                                duration: 3000,
+                                easing: "swing",
+                                step: function (now) {
+                                    $(this).text(Math.ceil(now));
+                                },
+                            }
+                        );
                 });
-            });
-        },
+            },
+        });
+
+    $(".contact-btn").on("click", function (e) {
+        $("#modal_form").fadeIn(300);
+        e.preventDefault();
     });
 
+    var modal = document.getElementById("modal_form");
+    document.onclick = function (event) {
+        if (event.target == modal) {
+            $("#modal_form").fadeOut(300);
+        }
+    };
+
+    var phones = [{ mask: "(##) ###-##-##" }];
+    $("#phone-number").inputmask({
+        mask: phones,
+        greedy: false,
+        showMaskOnHover: false,
+        definitions: { "#": { validator: "[0-9]", cardinality: 1 } },
+    });
+
+    $(function () {
+        $("#tabs").tabs();
+    });
 });
