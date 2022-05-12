@@ -25,7 +25,7 @@ a {
 }
 
 .nav {
-    position: absolute;
+    position: fixed;
     display: flex;
     height: 100px;
     width: 100% !important;
@@ -152,12 +152,12 @@ a {
         background-position: 0 100%;
         background-size: contain;
     }
-    .anim-svg{
+    .anim-svg {
         position: absolute;
         right: 150px;
         z-index: 3;
-        width: calc( 100% / 3 );
-        svg:not(#bubles){
+        width: calc(100% / 3);
+        svg:not(#bubles) {
             width: 100%;
             position: absolute;
         }
@@ -521,7 +521,7 @@ a {
         height: 100%;
         background: url(../img/footer-curve.png) no-repeat;
         position: absolute;
-        bottom: 0;
+        bottom: -1px;
         left: 0;
         background-position: 0 100%;
         background-size: contain;
@@ -616,7 +616,7 @@ a {
         img {
             margin: 0 10px 0;
             border: 1px solid #eee;
-            width: calc(100% / 3);
+            width: calc(100% / 3 - 20px);
         }
     }
     .inner-section-title {
@@ -672,6 +672,55 @@ a {
     &-text {
         p {
             margin: 30px 0;
+        }
+    }
+    .grid-items {
+        flex-wrap: wrap;
+        a {
+            width: calc(100% / 3);
+            display: block;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+            height: 50vh;
+            img {
+                width: 100%;
+                min-height: 50vh;
+                max-height: 50vh;
+                object-fit: cover;
+                transition: all 0.3s;
+                height: 100%;
+            }
+            span {
+                position: absolute;
+                left: 20px;
+                bottom: 20px;
+                color: $white_color;
+                font-size: 20px;
+                font-weight: bold;
+                z-index: 3;
+                transition: all 0.3s;
+            }
+            &::after {
+                position: absolute;
+                content: "";
+                width: 100%;
+                height: 100%;
+                background: rgba($color: #000000, $alpha: 0.7);
+                left: 0;
+                top: 0;
+                z-index: 1;
+                transition: all 0.3s;
+            }
+            &:hover::after {
+                background: rgba($color: #000000, $alpha: 0.2);
+            }
+            &:hover img {
+                transform: scale(1.05);
+            }
+            &:hover span {
+                transform: translateY(-20px);
+            }
         }
     }
 }
@@ -1050,18 +1099,16 @@ a {
     }
 }
 
-
-
 @media only screen and (max-width: 1200px) {
     .header {
         &-content {
             display: flex;
         }
-        .anim-svg{
+        .anim-svg {
             right: 50px;
         }
     }
-    
+
     .portfolio-grid {
         margin-top: 20px;
     }
@@ -1117,15 +1164,16 @@ a {
     .services-items .right {
         height: 50vh;
     }
-    .section-about-inner .left, .section-about-inner .right{
+    .section-about-inner .left,
+    .section-about-inner .right {
         width: 100%;
     }
-    .section-about-inner .left{
+    .section-about-inner .left {
         text-align: center;
     }
-    .section-about-inner{
+    .section-about-inner {
         flex-direction: column;
-    } 
+    }
     .header {
         &-content {
             display: flex;
@@ -1133,67 +1181,155 @@ a {
             justify-content: center;
             align-items: center;
         }
-        .anim-svg{
+        .anim-svg {
             position: relative;
             left: 0;
             right: 0;
-            width: calc( 100% / 2 );
+            width: calc(100% / 2);
         }
-        &-text{
+        &-text {
             top: 70%;
         }
+    }
+    .portfolios .grid-items a span {
+        font-size: 16px;
     }
 }
 
 @media only screen and (max-width: 768px) {
-    .padding-150{
+    .padding-150 {
         padding: 0 30px;
     }
-    .header-text{
+    .header-text {
         padding: 0 30px;
-        h1{
+        h1 {
             font-size: 24px;
         }
+    }
+    .portfolios .grid-items .left,
+    .portfolios .grid-items .right,
+    .portfolios .grid-items a {
+        height: 30vh;
+    }
+    .contacts-blocks{
+        flex-direction: column;
+    }
+    .contacts .info, .contacts .map{
+        width: 100%;
     }
 }
 
 @media only screen and (max-width: 576px) {
-    .header .anim-svg{
-        width: calc( 100% - 50px );
+    .portfolios .grid-items a{
+        width: 100%;
+    }
+    .header .anim-svg {
+        width: calc(100% - 50px);
         margin-top: -30%;
     }
-    .section-about-inner,.portfolio-inner{
+    .portfolios .grid-items .left,
+    .portfolios .grid-items .right {
+        height: 25vh;
+    }
+    .section-about-inner,
+    .portfolio-inner {
         padding: 50px 0;
     }
-    .portfolio-title{
+    .portfolio-title {
         flex-direction: column;
-        p{
+        p {
             margin: 20px 0;
-            br{
+            br {
                 display: none;
             }
         }
-        a{
+        a {
             width: 100%;
             text-align: center;
-            
         }
     }
-    .section-about-inner .left{
+    .section-about-inner .left {
         margin-bottom: 30px;
     }
-    .services-items .left, .services-items .right, .grid-items .left, .grid-items .right{
+    .services-items .left,
+    .services-items .right,
+    .grid-items .left,
+    .grid-items .right {
         width: 100%;
         height: 35vh;
-        a span{
+        a span {
             font-size: 14px;
             text-align: left;
         }
     }
-    .services-items, .grid-items{
+    .services-items,
+    .grid-items {
         flex-direction: column;
     }
-    .counter-elements{
+    .counter-elements {
         flex-direction: column;
+    }
+    .footer {
+        ul {
+            flex-direction: column;
+            li {
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+        .social-items {
+            flex-direction: row;
+            justify-content: space-between;
+            li {
+                margin: 0;
+            }
+        }
+    }
+    .footer ul li:nth-child(2) {
+        text-align: left;
+    }
+    .footer-contacts {
+        text-align: left;
+    }
+    .breadcrumb-with-title {
+        flex-direction: column;
+        justify-content: start;
+        align-items: stretch;
+        p {
+            margin-top: 10px;
+        }
+    }
+    .about-certificates {
+        flex-direction: column;
+        img {
+            width: 100%;
+            margin: 10px;
+        }
+    }
+    .about-inner, .contacts-inner {
+        margin: 100px 0;
+    }
+    .section-big-text:not(.section-title){
+        font-size: 20px;
+    }
+    
+}
+
+@media only screen and (max-width: 400px) {
+    .header .anim-svg{
+        width: calc( 100% - 80px );
+        margin-top: -90%;
+    }
+    .header-text h1{
+        font-size: 18px;
+    }
+    .mt-50{
+        margin-top: 30px;
+    }
+    .about-inner, .contacts-inner {
+        margin: 100px 0;
+    }
+    .contacts .info p{
+        font-size: 18px;
     }
 }

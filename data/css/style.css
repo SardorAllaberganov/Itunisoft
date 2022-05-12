@@ -21,7 +21,7 @@ a {
 }
 
 .nav {
-  position: absolute;
+  position: fixed;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -205,7 +205,7 @@ a {
   position: absolute;
   right: 150px;
   z-index: 3;
-  width: calc( 100% / 3);
+  width: calc(100% / 3);
 }
 
 .header .anim-svg svg:not(#bubles) {
@@ -714,7 +714,7 @@ a {
   height: 100%;
   background: url(../img/footer-curve.png) no-repeat;
   position: absolute;
-  bottom: 0;
+  bottom: -1px;
   left: 0;
   background-position: 0 100%;
   background-size: contain;
@@ -844,7 +844,7 @@ a {
 .about-certificates img {
   margin: 0 10px 0;
   border: 1px solid #eee;
-  width: calc(100% / 3);
+  width: calc(100% / 3 - 20px);
 }
 
 .about .inner-section-title {
@@ -908,6 +908,71 @@ a {
 
 .portfolios-text p {
   margin: 30px 0;
+}
+
+.portfolios .grid-items {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.portfolios .grid-items a {
+  width: calc(100% / 3);
+  display: block;
+  position: relative;
+  overflow: hidden;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  height: 50vh;
+}
+
+.portfolios .grid-items a img {
+  width: 100%;
+  min-height: 50vh;
+  max-height: 50vh;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  height: 100%;
+}
+
+.portfolios .grid-items a span {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  color: #f4f7f5;
+  font-size: 20px;
+  font-weight: bold;
+  z-index: 3;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.portfolios .grid-items a::after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  left: 0;
+  top: 0;
+  z-index: 1;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.portfolios .grid-items a:hover::after {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.portfolios .grid-items a:hover img {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+}
+
+.portfolios .grid-items a:hover span {
+  -webkit-transform: translateY(-20px);
+          transform: translateY(-20px);
 }
 
 .vacancy-inner {
@@ -1366,7 +1431,8 @@ a {
   .services-items .right {
     height: 50vh;
   }
-  .section-about-inner .left, .section-about-inner .right {
+  .section-about-inner .left,
+  .section-about-inner .right {
     width: 100%;
   }
   .section-about-inner .left {
@@ -1397,10 +1463,13 @@ a {
     position: relative;
     left: 0;
     right: 0;
-    width: calc( 100% / 2);
+    width: calc(100% / 2);
   }
   .header-text {
     top: 70%;
+  }
+  .portfolios .grid-items a span {
+    font-size: 16px;
   }
 }
 
@@ -1414,14 +1483,36 @@ a {
   .header-text h1 {
     font-size: 24px;
   }
+  .portfolios .grid-items .left,
+  .portfolios .grid-items .right,
+  .portfolios .grid-items a {
+    height: 30vh;
+  }
+  .contacts-blocks {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .contacts .info, .contacts .map {
+    width: 100%;
+  }
 }
 
 @media only screen and (max-width: 576px) {
+  .portfolios .grid-items a {
+    width: 100%;
+  }
   .header .anim-svg {
-    width: calc( 100% - 50px);
+    width: calc(100% - 50px);
     margin-top: -30%;
   }
-  .section-about-inner, .portfolio-inner {
+  .portfolios .grid-items .left,
+  .portfolios .grid-items .right {
+    height: 25vh;
+  }
+  .section-about-inner,
+  .portfolio-inner {
     padding: 50px 0;
   }
   .portfolio-title {
@@ -1443,15 +1534,22 @@ a {
   .section-about-inner .left {
     margin-bottom: 30px;
   }
-  .services-items .left, .services-items .right, .grid-items .left, .grid-items .right {
+  .services-items .left,
+  .services-items .right,
+  .grid-items .left,
+  .grid-items .right {
     width: 100%;
     height: 35vh;
   }
-  .services-items .left a span, .services-items .right a span, .grid-items .left a span, .grid-items .right a span {
+  .services-items .left a span,
+  .services-items .right a span,
+  .grid-items .left a span,
+  .grid-items .right a span {
     font-size: 14px;
     text-align: left;
   }
-  .services-items, .grid-items {
+  .services-items,
+  .grid-items {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
@@ -1462,6 +1560,84 @@ a {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+  }
+  .footer ul {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .footer ul li {
+    width: 100%;
+    margin: 10px 0;
+  }
+  .footer .social-items {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .footer .social-items li {
+    margin: 0;
+  }
+  .footer ul li:nth-child(2) {
+    text-align: left;
+  }
+  .footer-contacts {
+    text-align: left;
+  }
+  .breadcrumb-with-title {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: start;
+    -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+            align-items: stretch;
+  }
+  .breadcrumb-with-title p {
+    margin-top: 10px;
+  }
+  .about-certificates {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .about-certificates img {
+    width: 100%;
+    margin: 10px;
+  }
+  .about-inner, .contacts-inner {
+    margin: 100px 0;
+  }
+  .section-big-text:not(.section-title) {
+    font-size: 20px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .header .anim-svg {
+    width: calc( 100% - 80px);
+    margin-top: -90%;
+  }
+  .header-text h1 {
+    font-size: 18px;
+  }
+  .mt-50 {
+    margin-top: 30px;
+  }
+  .about-inner, .contacts-inner {
+    margin: 100px 0;
+  }
+  .contacts .info p {
+    font-size: 18px;
   }
 }
 /*# sourceMappingURL=style.css.map */
