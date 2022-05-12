@@ -64,4 +64,28 @@ $(document).ready(function () {
     $(function () {
         $("#tabs").tabs();
     });
+
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+        });
+    }
+
+    $(".open_menu").click(function(e){
+        $(".nav-collapse").css("right", 0);
+        e.preventDefault();
+    })
+    $(".close_menu").click(function(e){
+        $(".nav-collapse").css("right", '-' + 100 + '%');
+        e.preventDefault();
+    })
 });
