@@ -339,124 +339,10 @@ a {
 }
 
 .services-inner {
-  padding: 150px 0 50px 0;
+  padding: 150px 0;
   text-align: center;
   position: relative;
   z-index: 9;
-}
-
-.services-items {
-  width: 100%;
-  position: relative;
-  margin: 70px 0;
-  left: 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-}
-
-.services-items .left,
-.services-items .right {
-  width: 50%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  height: 70vh;
-}
-
-.services-items .left a,
-.services-items .right a {
-  position: relative;
-  display: block;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  overflow: hidden;
-  height: 100%;
-}
-
-.services-items .left a::after,
-.services-items .right a::after {
-  position: absolute;
-  content: "";
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.7);
-  left: 0;
-  top: 0;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-}
-
-.services-items .left a:hover::after,
-.services-items .right a:hover::after {
-  background: rgba(0, 0, 0, 0.2);
-}
-
-.services-items .left a:hover img,
-.services-items .right a:hover img {
-  -webkit-transform: scale(1.05);
-          transform: scale(1.05);
-}
-
-.services-items .left a:hover span,
-.services-items .right a:hover span {
-  -webkit-transform: translateY(-20px);
-          transform: translateY(-20px);
-}
-
-.services-items .left a img,
-.services-items .right a img {
-  width: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  height: 100%;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-}
-
-.services-items .left a span,
-.services-items .right a span {
-  position: absolute;
-  left: 20px;
-  bottom: 20px;
-  color: #f4f7f5;
-  font-size: 20px;
-  font-weight: bold;
-  z-index: 3;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-}
-
-.services-items .left-big,
-.services-items .right-big {
-  width: 50%;
-  height: 100%;
-}
-
-.services-items .left-row,
-.services-items .right-row {
-  width: 50%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  height: 100%;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-.services-items .left-row a,
-.services-items .right-row a {
-  height: 50%;
 }
 
 .grid-items {
@@ -1370,6 +1256,7 @@ a {
   }
   .portfolio-grid {
     margin-top: 20px;
+    padding: 0 !important;
   }
   .grid-items .left a span,
   .grid-items .right a span {
@@ -1545,7 +1432,7 @@ a {
   .services-items .right a span,
   .grid-items .left a span,
   .grid-items .right a span {
-    font-size: 14px;
+    font-size: 12px;
     text-align: left;
   }
   .services-items,
